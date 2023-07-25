@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +51,14 @@ public class Activity18 extends AppCompatActivity {
                 performAuth();
             }
         });
+        adminreply.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Clear the text of the EditText when the user starts typing
+                adminreply.setText("");
+                return false;
+            }
+        });
     }
 
     public void performAuth()
@@ -58,12 +67,14 @@ public class Activity18 extends AppCompatActivity {
         String response = "Your complain has been successfully lodged and Respond !!";
         FirebaseDatabase firebaseDatabase  = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email = "anaymous@gmail.com";
-        if (user != null) {
-
-            email = user.getEmail();
-        }
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String email = "anaymous@gmail.com";
+//        if (user != null) {
+//
+//            email = user.getEmail();
+//        }
+        System.out.println("Ayush " + recname);
+        String key = android.util.Base64.encodeToString(recname.getBytes(), android.util.Base64.NO_WRAP); //encoder
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -79,9 +90,9 @@ public class Activity18 extends AppCompatActivity {
         {
             adminresponse = "We are sorry you faced issue , we will take appropriate actions. ";
         }
-        databaseReference.child("Admin").child(recname).child("Name").setValue(recname);
-        databaseReference.child("Admin").child(recname).child("Reply").setValue(adminresponse);
-        databaseReference.child("Users").child(recname).child("Status").setValue(adminresponse);
+        databaseReference.child("Admin").child(key).child("Name").setValue(recname);
+        databaseReference.child("Admin").child(key).child("Reply").setValue(adminresponse);
+        databaseReference.child("Users").child(key).child("Status").setValue(adminresponse);
         Toast.makeText(Activity18.this,"Your Response Recorded",Toast.LENGTH_SHORT).show();
         sendUserToNextActivity();
     }

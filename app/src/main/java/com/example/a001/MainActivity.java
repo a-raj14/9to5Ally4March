@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.tensorflow.lite.Interpreter;
 import org.tensorflow.lite.task.text.nlclassifier.NLClassifier;
 
 import android.app.Application;
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (user != null) {
                                     String email = user.getEmail();
-                                    String Authdomain = "admin.com";
+                                    String Authdomain = "admin.in";
                                     String domain = email.substring(email.indexOf("@") + 1);
                                     System.out.println("verify user " + email + " verify domain " + domain+"hi");
 
@@ -132,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             }
             private void sendUserToNextNextActivity() {
                 System.out.println("verify user inside sendUserToNextNextActivity ");
-                Intent intent = new Intent(MainActivity.this,FrontPage.class);
+                Intent intent = new Intent(MainActivity.this,hr_front_page.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

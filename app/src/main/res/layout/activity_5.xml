@@ -20,7 +20,7 @@
     <ImageView
         android:id="@+id/pos"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="201dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
@@ -29,52 +29,108 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_output"
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:layout_above="@+id/btn"
-        android:layout_below="@+id/pos"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="4dp"
-        android:padding="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20dp" />
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="128dp"
-
-        android:backgroundTint="@color/black"
-        android:onClick="btnSpeech"
-        android:text="Tap to Speak"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        tools:ignore="OnClick"></Button>
-
     <Button
 
         android:id="@+id/next"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="193dp"
+        android:layout_height="wrap_content"
 
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+
+
+        android:layout_marginStart="113dp"
         android:layout_marginTop="20dp"
+
+        android:layout_marginEnd="105dp"
         android:layout_marginBottom="17dp"
-
-
         android:backgroundTint="@color/black"
-        android:text="Submit"
-
+        android:text="Back"
         android:textSize="20sp"></Button>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView11"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="37dp"
+        android:text="Registered Employee       : "
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="165dp"
+        android:text="Avg Organization Report : "
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginBottom="35dp"
+        android:text="Total Employe Checkin    : "
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="108dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="162dp"
+        android:layout_toEndOf="@+id/textView10"
+        android:text="Loading.."
+        android:textColor="@color/purple_700"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="108dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/textView12"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="31dp"
+        android:layout_toEndOf="@+id/textView11"
+        android:text="Loading.."
+        android:textColor="@color/purple_700"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="108dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/textView13"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="38dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:text="Loading.."
+        android:textColor="@color/purple_700"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

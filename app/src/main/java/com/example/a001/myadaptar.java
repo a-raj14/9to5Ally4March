@@ -46,9 +46,10 @@ public class myadaptar extends RecyclerView.Adapter<myadaptar.MyViewHolder> {
         holder.subject.setText(user.getSubject());
         holder.Name.setText(user.getName());
         holder.Description.setText(user.getDescription());
-        holder.RealName.setText(user.getRealName());
+        holder.RealName.setText(user.getEmail());
         holder.Status.setText(user.getStatus());
         String name = user.getStatus();
+        String email = user.getEmail();
         System.out.println("Ayush "+name);
         String comp = "Your Complain is Pending !!";
         if(name.equals(comp))

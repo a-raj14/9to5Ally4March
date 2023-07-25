@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +16,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,9 +41,13 @@ import java.util.Locale;
 public class Activity5 extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
-    TextView outputText;
-    Button btn1;
+    TextView one;
+    TextView two;
+    TextView three;
     Button btn2;
+    public long employee = 0;
+    public long empAverage = 0;
+    public long users = 0;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -50,86 +58,40 @@ public class Activity5 extends AppCompatActivity {
         System.out.println("Ayush Output check 2");
         setContentView(R.layout.activity_5);
         System.out.println("Ayush Output check 3");
-        outputText = (TextView) findViewById(R.id.txt_output);
-        btn1 = (Button) findViewById(R.id.btn);
+        one = (TextView) findViewById(R.id.textView14);
+        two = (TextView) findViewById(R.id.textView13);
+        three = (TextView) findViewById(R.id.textView12);
         btn2 = (Button) findViewById(R.id.next);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
-        //firebaseDatabase = FirebaseDatabase.getInstance();
-        //Log.i(TAG, "Ayush Output check firebase   " + firebaseDatabase);
-        //ref = firebaseDatabase.getReference().child("User_Response");
-        //activity5 = new GlobalVariable();
-
-
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String answer=outputText.getText().toString();
-                GlobalVariable myAppClass = (GlobalVariable)getApplicationContext();
-                ArrayList<String> globalArrayList = myAppClass.getGlobalArrayList();
-                System.out.println("Ayush Output click submit in activity 5");
-                Log.i(TAG, "Ayush Output Send DATA TO FIREBASE ON CLICK SUBMIT  " + answer);
-                performAuth();
-                Intent intent = new Intent(Activity5.this, Activity6.class);
-                startActivity(intent);
-            }
-        });
-    }
-    public void btnSpeech(View view) {
-        System.out.println("Ayush Output check 1");
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello Speak Something!!");
-        try {
-            startActivityForResult(intent, 1);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-
-        }
-
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode)
-        {
-            case 1: if(resultCode==RESULT_OK && null!=data)
-            {
-                ArrayList<String> result=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                System.out.println("Ayush Output check 0");
-                Log.i(TAG, "Ayush Output check Local   " + result);
-                GlobalVariable myAppClass = (GlobalVariable)getApplicationContext();
-//saving the list
-                myAppClass.setGlobalArrayList(result);
-//getting the list
-                ArrayList<String> globalArrayList = myAppClass.getGlobalArrayList();
-                System.out.println(globalArrayList.size());
-                Log.i(TAG, "Ayush Output check on activity 5  " + globalArrayList);
-                outputText.setText(result.get(0));
-                //System.out.println(outputText);
-            }
-                break;
-        }
-    }
-    public void performAuth()
-    {
-        FirebaseDatabase firebaseDatabase  = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("UserAnswer");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Object value = dataSnapshot.getValue();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                users = (long) snapshot.child("user").child("total_user").getValue();
+                one.setText(String.valueOf(users));
+                employee = (long) snapshot.child("user").child("Emp_Participate").getValue();
+                two.setText(String.valueOf(employee));
+                empAverage = (long) snapshot.child("user").child("Avg_Mental_health").getValue();
+                three.setText(String.valueOf(empAverage)+"%");
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Activity5.this, "We are Sorry, Server Down", Toast.LENGTH_SHORT).show();
             }
         });
-        databaseReference.child("UserAnswer").child("user").child("1").setValue(outputText.getText().toString());
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity5.this, hr_front_page.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 

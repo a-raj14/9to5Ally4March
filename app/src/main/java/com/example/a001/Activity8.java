@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -68,11 +69,17 @@ public class Activity8 extends AppCompatActivity {
         btnn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 performAuth();
                 Intent intent = new Intent(Activity8.this, Activity10.class);
                 startActivity(intent);
+            }
+        });
+        outputText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Clear the text of the EditText when the user starts typing
+                outputText.setText("");
+                return false;
             }
         });
     }
@@ -129,5 +136,12 @@ public class Activity8 extends AppCompatActivity {
             }
         });
         databaseReference.child("UserAnswer").child("user").child("3").setValue(outputText.getText().toString());
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Activity2.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

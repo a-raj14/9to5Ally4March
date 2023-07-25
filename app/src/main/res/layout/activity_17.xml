@@ -12,7 +12,7 @@
         android:id="@+id/complainstatusheading"
         android:layout_width="245dp"
         android:layout_height="76dp"
-        android:text="Your Complain Status"
+        android:text="Complaint Status"
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -62,31 +62,31 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Please Enter Your Name"
+        android:layout_marginTop="8dp"
+        android:text="Your Complaint Description"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/complainstatusheading" />
 
     <EditText
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/desc"
+        android:layout_width="343dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:inputType="textMultiLine"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <Button
         android:id="@+id/button2"
@@ -106,9 +106,9 @@
         android:layout_width="86dp"
         android:layout_height="79dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="@+id/username"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="@+id/desc"
+        app:layout_constraintStart_toStartOf="@+id/desc"
+        app:layout_constraintTop_toBottomOf="@+id/desc"
         app:srcCompat="@drawable/searchforproject" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

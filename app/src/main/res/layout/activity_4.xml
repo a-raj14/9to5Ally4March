@@ -115,8 +115,8 @@
         android:ems="10"
         android:gravity="bottom"
         android:inputType="textMultiLine"
-        android:text="Submit Your response"
         android:textSize="20dp"
+        android:hint="Type here..."
         android:textStyle="normal" />
 
     <TextView

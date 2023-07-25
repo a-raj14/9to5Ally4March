@@ -26,42 +26,27 @@ tools:context=".MainActivity">
         android:textColor="@color/white"
         android:textSize="35dp"
         android:textStyle="bold" />
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userList"
         android:layout_width="match_parent"
-        android:layout_height="656dp"
+        android:layout_height="657dp"
         android:layout_below="@+id/signin"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-43dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/adminlogoutbtn"
-        android:layout_width="106dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/userList"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="-40dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="0dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="LogOut"
-        android:textColor="@color/white" />
 
-
-    <!--    <Button-->
+    <!--        <Button-->
 <!--        android:id="@+id/button"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->

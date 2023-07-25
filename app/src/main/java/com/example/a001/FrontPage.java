@@ -27,7 +27,7 @@ import android.content.Intent;
         import androidx.annotation.Nullable;
         import androidx.appcompat.app.AppCompatActivity;
 
-        import org.tensorflow.lite.Interpreter;
+        //import org.tensorflow.lite.Interpreter;
 
         import java.io.File;
 
@@ -39,7 +39,6 @@ public class FrontPage extends AppCompatActivity implements SelectListener {
     DatabaseReference statusshow;
     myadaptar myAdapter;
     ArrayList<item> list;
-    Button adminlogout;
     ProgressDialog progressDialog;
     String DesName;
     @Override
@@ -51,7 +50,6 @@ public class FrontPage extends AppCompatActivity implements SelectListener {
         database = FirebaseDatabase.getInstance().getReference("Users");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adminlogout = findViewById(R.id.adminlogoutbtn);
         progressDialog = new ProgressDialog(this);
         list = new ArrayList<>();
         myAdapter = new myadaptar(this,list,this);
@@ -80,17 +78,6 @@ public class FrontPage extends AppCompatActivity implements SelectListener {
 
             }
         });
-
-        adminlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(FrontPage.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 
     @Override
@@ -100,7 +87,7 @@ public class FrontPage extends AppCompatActivity implements SelectListener {
 
         String Des = Item.getDescription();
         System.out.println("Realname finding");
-        String datafind = Item.getRealName();
+        String datafind = Item.getEmail();
         System.out.println("Realname "+datafind);
         intent.putExtra("message_des", Des);
         intent.putExtra("message_name", datafind);

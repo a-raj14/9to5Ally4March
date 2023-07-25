@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class item {
-    String subject, Name, Description,RealName,Status;
+    String subject, Name, Description,RealName,Status,Email;
 
     public String getStatus(){return Status;}
 
@@ -29,5 +29,7 @@ public class item {
     public String getDescription() {
         return Description;
     }
+
+    public String getEmail(){ return Email;}
 
 }
